@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Express-MongoDB ToDo</title>
+</head>
+<body>
+  <h1>ToDo Items:</h1>
+  <form action="/todos" method="post">
+    <input type="text" name="description" />
+    <button type="submit">Add</button>
+  </form>  
+  <ul>
+    {{#todos}}
+      <li>
+        <form action="/todos/{{_id}}/todoCompleted" method="post">
+          {{description}}<button type="submit">&#10004;</button>
+        </form>
+      </li>
+    {{/todos}}
+  </ul>
+
+  <h3>Done:</h3>
+  <ul>
+    {{#doneTodos}}
+      <li>
+        <form action="/todos/{{_id}}/todoCompleted" method="post">
+          {{description}}<button type="submit">&#10008;</button>
+        </form>
+      </li>
+    {{/doneTodos}}
+  </ul>
+ 
+
+</body> 
+</html>
